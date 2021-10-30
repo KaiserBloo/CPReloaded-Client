@@ -1,0 +1,38 @@
+{
+  "name": "CPReloaded-Client",
+  "version": "1.0.0",
+  "description": "Electron client for CPReloaded",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder build --win --publish always",
+    "build-mac": "electron-builder build --mac --publish never",
+    "build-linux": "electron-builder build --linux --publish never",
+    "appveyor-build": "electron-builder build --win --publish onTagOrDraft"
+  },
+  "bugs": {
+    "url": "https://github.com/kaiserbloo/cpreloadedclientissues"
+  },
+  "homepage": "https://github.com/kaiserbloo/cpreloadedclient#readme",
+  "repository": "https://github.com/kaiserbloo/cpreloadedclient",
+  "author": "kaiserbloo",
+  "license": "CC0-1.0",
+  "devDependencies": {
+    "electron": "^6.1.2",
+    "electron-builder": "^22.9.1",
+    "electron-is-dev": "^1.1.0"
+  },
+  "dependencies": {
+    "discord-rpc": "^3.1.4",
+    "electron-is-dev": "^1.1.0",
+    "electron-updater": "^4.2.0"
+  },
+  "build": {
+    "appId": "cpreloadedclient.client",
+    "productName": "CPReloaded Client",
+    "asar": "false",
+    "win": {
+      "publish": "github"
+    }
+  }
+}
