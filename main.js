@@ -1,5 +1,5 @@
 const {
-	Menu, MenuItem, app, BrowserWindow, dialog
+	Menu, MenuItem, app, BrowserWindow, dialog, nativeTheme
 } = require('electron');
 const isDev = require('electron-is-dev');
 const {
@@ -68,9 +68,7 @@ function createWindow() {
 
 	mainWindow.setMenu(null);
 	// New URL!
-	if (process.platform == 'darwin') {
-		menuTemplate.unshift({label: ''});
-	}
+
 	mainWindow.loadURL('https://play.cpreloaded.net/');
 
   const clientId = '903074746294501376'; DiscordRPC.register(clientId); const rpc = new DiscordRPC.Client({ transport: 'ipc' }); const startTimestamp = new Date();
@@ -90,6 +88,8 @@ function createWindow() {
 		mainWindow = null
 	});
 
+	nativeTheme.themeSource = 'dark'
+
 }
 
 app.on('ready', () => {
@@ -97,6 +97,7 @@ app.on('ready', () => {
 	Menu.setApplicationMenu(menu);
 	createWindow()
 	Menu.setApplicationMenu(menu);
+
 });
 
 app.on('window-all-closed', function() {
@@ -104,8 +105,5 @@ app.on('window-all-closed', function() {
 });
 
 app.on('activate', function() {
-	const menu = Menu.buildFromTemplate(menuTemplate);
-	Menu.setApplicationMenu(menu);
 	if (mainWindow === null) createWindow();
-	Menu.setApplicationMenu(menu);
 });
