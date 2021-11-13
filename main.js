@@ -1,5 +1,5 @@
 const {
-	Menu, MenuItem, app, BrowserWindow, dialog, nativeTheme
+	Menu, MenuItem, app, BrowserWindow, dialog, nativeTheme, session
 } = require('electron');
 const isDev = require('electron-is-dev');
 const {
@@ -50,6 +50,12 @@ const menuTemplate = [
 		click: () => {
 			mainWindow.loadURL('https://play.cpreloaded.net/');
 		}    
+	},
+    {
+		label: 'Load Staging',
+		click: () => {
+			mainWindow.loadURL('https://playstage.cpreloaded.net/');
+		}    
 	}
 ];
 
@@ -68,8 +74,10 @@ function createWindow() {
 
 	mainWindow.setMenu(null);
 	// New URL!
+	mainWindow.webContents.session.clearCache();
 
 	mainWindow.loadURL('https://play.cpreloaded.net/');
+
 
   const clientId = '903074746294501376'; DiscordRPC.register(clientId); const rpc = new DiscordRPC.Client({ transport: 'ipc' }); const startTimestamp = new Date();
   rpc.on('ready', () => {
@@ -90,7 +98,16 @@ function createWindow() {
 
 	nativeTheme.themeSource = 'dark'
 
+
+
 }
+
+app.on('login', (event, webContents, request, authInfo, callback) => {
+	event.preventDefault();
+	// popup a dialog to let the user enter a username/password
+	// ...
+	callback("user", "redacted");
+  });
 
 app.on('ready', () => {
 	const menu = Menu.buildFromTemplate(menuTemplate);

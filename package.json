@@ -11,10 +11,10 @@
     "appveyor-build": "electron-builder build --win --publish onTagOrDraft"
   },
   "bugs": {
-    "url": "https://github.com/kaiserbloo/cpreloadedclientissues"
+    "url": "https://github.com/KaiserBloo/CPReloaded-Client/issues"
   },
-  "homepage": "https://github.com/kaiserbloo/cpreloadedclient#readme",
-  "repository": "https://github.com/kaiserbloo/cpreloadedclient",
+  "homepage": "https://github.com/KaiserBloo/CPReloaded-Client/#readme",
+  "repository": "https://github.com/KaiserBloo/CPReloaded-Client/",
   "author": "kaiserbloo",
   "license": "CC0-1.0",
   "devDependencies": {
